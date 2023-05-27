@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <form #teamForm="ngForm"class="col-md-6 mt-2" (ngSubmit)="onSubmit(teamForm)">
+        <div class="mb-3 text-center">
+          <span class="text-warning fst-italic fw-bolder fs-4">New Team</span>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Team Name</label>
+          <input type="text" id="name" name="name" class="form-control" [(ngModel)]="team.name">
+        </div>
+        <div class="mb-2">
+          <label for="city" class="form-label">City</label>
+          <input type="text" id="city" name="GRPNo" class="form-control" [(ngModel)]="team.city">
+        </div>
+        <div class="mb-2">
+            <label for="coach" class="form-label">Coach</label>
+            <input type="text" id="coach" name="coach" class="form-control" [(ngModel)]="team.coach">
+          </div>
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>

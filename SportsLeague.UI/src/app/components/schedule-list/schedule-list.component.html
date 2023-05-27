@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered table-sm caption-top">
+                <caption>Home Schedules</caption>                
+                    <thead> 
+                        <tr>
+                            <th>Away Team</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let home of homeSchedules">
+                            <td>{{home.awayTeamName}}</td>
+                            <td>{{home.scheduleDate | date}}</td>
+                        </tr>
+                    </tbody>
+                </table>            
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered table-sm caption-top">
+                <caption>Away Schedules</caption>                
+                    <thead> 
+                        <tr>
+                            <th>Home Team</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let away of awaySchedules">
+                            <td>{{away.homeTeamName}}</td>
+                            <td>{{away.scheduleDate | date}}</td>
+                        </tr>
+                    </tbody>
+                </table>   
+        </div>
+    </div>
+</div>

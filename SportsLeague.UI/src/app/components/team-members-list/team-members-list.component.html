@@ -1,0 +1,44 @@
+<div class="container mt-3" >
+    <div class="row" >
+        <div class="col-md-6" *ngIf="teamMembers">
+            <table class="table table-bordered table-sm caption-top">
+                <caption>Members List</caption> 
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let m of teamMembers">
+                        <td>{{m.name}}</td>
+                        <td>{{m.position}}</td>
+                        <td>{{m.number}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">            
+            <div class="row justify-content-end">
+                <form #memberForm="ngForm" class="col-md-7" (ngSubmit)="onSubmit(memberForm)">                  
+                  <div class="text-dark mt-3">
+                    <label for="name" class="form-label">Member Name</label>
+                    <input type="text" id="name" name="name" class="form-control" [(ngModel)]="teamMember.name">
+                  </div>
+                  <div class="text-dark mt-2">
+                    <label for="position" class="form-label">Position</label>
+                    <input type="text" id="position" name="position" class="form-control" [(ngModel)]="teamMember.position">
+                  </div>
+                  <div class="text-dark mt-2">
+                      <label for="number" class="form-label">Number</label>
+                      <input type="text" id="number" name="number" class="form-control" [(ngModel)]="teamMember.number">
+                    </div>
+                  <div class="mt-2">
+                    <button type="submit" class="btn btn-primary w-100">Add New Member</button>
+                  </div>
+                </form>
+              </div>           
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container" *ngIf="(teams$ | async) as teams">
+    <form #scheduleForm="ngForm" (ngSubmit)="onSubmit(scheduleForm)">    
+        <div class="row">        
+            <div class="col mb-3">
+                <label for="home" class="form-label">Home</label>
+                <select id="home" name="home" class="form-select" [(ngModel)]="schedule.homeTeamId" 
+                    #homeTeam="ngModel" (change)="checkId(homeTeam)" required >                  
+                  <option *ngFor="let home of teams" [value]="home.id">{{home.name}}</option>
+                </select>                
+                    <div class="alert alert-danger" *ngIf="homeTeam.errors && homeTeam.touched">
+                        <div *ngIf="homeTeam.errors?.dublicate">Home team and away team can not be equal</div>                                      
+                        <div *ngIf="!homeTeam.errors?.required">Please specify the away team.</div>                                                       
+                    </div>
+              </div>        
+        </div>
+
+        <div class="row">        
+            <div class="col mb-3">
+                <label for="away" class="form-label">Away</label>
+                <select id="away" name="away" class="form-select" (change)="checkId(awayTeam)" 
+                    [(ngModel)]="schedule.awayTeamId" #awayTeam="ngModel" required>                  
+                  <option *ngFor="let away of teams" [value]="away.id">{{away.name}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="awayTeam.errors && awayTeam.touched">
+                    <div *ngIf="awayTeam.errors?.dublicate">Home team and away team can not be equal</div>                                      
+                    <div *ngIf="awayTeam.errors?.required">Please specify the away team.</div>                                                       
+                </div>
+            </div>    
+            
+        </div>
+
+        <div class="row"> 
+            <div class="col">
+                <label for="date" class="form-label">Schedule Date</label>
+                <input class="form-control" type="date" name="date" [(ngModel)]="schedule.scheduleDate" required>                 
+            </div>       
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" [disabled]="!scheduleForm.valid">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
